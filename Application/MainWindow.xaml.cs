@@ -17,9 +17,9 @@ namespace Kolodziejski.RatingApp.Application
     /// <summary>
     /// Logika interakcji dla klasy ApplicationWindow.xaml
     /// </summary>
-    public partial class ApplicationWindow : Window
+    public partial class MainWindow : Window
     {
-        public ApplicationWindow()
+        public MainWindow()
         {
             InitializeComponent();
         }

@@ -3,14 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+             xmlns:local="clr-namespace:Kolodziejski.RatingApp.Application"
+             xmlns:vm="clr-namespace:Kolodziejski.RatingApp.ViewModel;assembly=ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:BooksListViewModel/>
+    </UserControl.DataContext>
     <DockPanel>
-        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0,0,1,0">
-            <Button Content="Dodaj książkę" Command="{Binding DataContext.DisplayBookView, RelativeSource={RelativeSource AncestorType={x:Type ApplicationWindow}, Mode=OneWay}}"/>
-        </Border>
-        <ListBox >
-            
-        </ListBox>
+        <Button Content="Dodaj książkę" DockPanel.Dock="Top" Command="{Binding DataContext.DisplayBookView, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, diag:PresentationTraceSources.TraceLevel=High}"/>
+        <!--<Button Content="Dodaj książkę" DockPanel.Dock="Top" Command="{Binding Path=DataContext.DisplayBookView, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainView}}}"/>-->
+        <!--<Button Command="{Binding DisplayBookView}" Content="Button" DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainView}}}" />-->
+        <!--Command="{Binding DataContext.DisplayBookView, RelativeSource={RelativeSource AncestorType=MainView}, Mode=OneWay}"/>-->
+        <Grid x:Name="Books">
+            <DataGrid ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}" HorizontalAlignment="Left" Height="400" Margin="0,0,0,0" VerticalAlignment="Top" Width="800" UseLayoutRounding="False" IsReadOnly="True" Grid.ColumnSpan="2"  SelectionMode="Single"/>
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            </Grid>-->
+        </Grid>
     </DockPanel>
 </UserControl>

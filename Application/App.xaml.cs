@@ -19,9 +19,10 @@ namespace Kolodziejski.RatingApp.Application
         {
             base.OnStartup(e);
 
-            ApplicationWindow app = new ApplicationWindow();
-            ApplicationViewModel context = new ApplicationViewModel();
-            ViewsMediator.ParentViewModel = context;
+            MainWindow app = new MainWindow();
+            MainViewModel context = new MainViewModel();
+            //ViewsMediator.ParentViewModel = context;
+
             app.DataContext = context;
             app.Show();
         }
