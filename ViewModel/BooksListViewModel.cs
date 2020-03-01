@@ -1,4 +1,5 @@
-﻿using Interfaces.Domain;
+﻿using Interfaces;
+using Interfaces.Domain;
 using Persistent;
 using System;
 using System.Collections.Generic;
@@ -6,18 +7,44 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity;
 
 namespace Kolodziejski.RatingApp.ViewModel
 {
-    public class BooksListViewModel : BaseViewModel
+    public class BooksListViewModel : BasePageViewModel
     {
         private ObservableCollection<IBook> _books;
         private IBook _selectedBook;
+        private IPagesManager _pagesManager;
+        private RelayCommand _addBookCommand;
+
+        public RelayCommand AddBookCommand
+        {
+            get
+            {
+                if (_addBookCommand == null)
+                    _addBookCommand = new RelayCommand(execute => {
+                        if (_pagesManager == null) _pagesManager = new UnityContainer().Resolve<IPagesManager>();
+                        _pagesManager.SetPageView(new BookViewModel());
+                        }, canExecute => true);
+                return _addBookCommand;
+            }
+        }
 
         public BooksListViewModel()
         {
             LoadData();
         }
+
+        //[Dependency]
+        //public IPagesManager PagesManager
+        //{
+        //    set
+        //    {
+        //        _pagesManager = value;
+        //    }
+        //    private get { return _pagesManager; }
+        //}
 
         public IBook SelectedBook
         {

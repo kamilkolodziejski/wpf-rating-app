@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Kolodziejski.RatingApp.ViewModel
 {
-    public class PagesViewModel : BaseViewModel
+    public class PagesViewModel : BasePageViewModel, IPagesViewModel
     {
-        private BaseViewModel _currentPageViewModel;
+        private IViewModel _currentPageViewModel;
         //private List<BaseViewModel> _pageViewModels;
 
         public PagesViewModel()
@@ -18,7 +19,7 @@ namespace Kolodziejski.RatingApp.ViewModel
             //PageViewModels.Add(new BooksListViewModel());
             //PageViewModels.Add(new BookViewModel());
 
-            CurrentPageViewModel = new BooksListViewModel();
+            _currentPageViewModel = new BooksListViewModel();
         }
 
         private RelayCommand _displayBookView;
@@ -27,13 +28,14 @@ namespace Kolodziejski.RatingApp.ViewModel
             get
             {
                 if(_displayBookView==null)
-                    _displayBookView = new RelayCommand(action => CurrentPageViewModel = new BookViewModel());
+                    _displayBookView = new RelayCommand(action => _currentPageViewModel = new BookViewModel());
                 Console.WriteLine("HELLLOOOOOO");
                 return _displayBookView;
             }
         }
 
-        public BaseViewModel CurrentPageViewModel
+        
+        public IViewModel CurrentPageViewModel
         {
             get { return _currentPageViewModel; }
             set
@@ -57,7 +59,7 @@ namespace Kolodziejski.RatingApp.ViewModel
         //    }
         //}
 
-        private void OnChangeViewModel(BaseViewModel viewModel)
+        private void OnChangeViewModel(IViewModel viewModel)
         {
             //if (!PageViewModels.Contains(viewModel))
             //    PageViewModels.Add(viewModel);

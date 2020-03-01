@@ -19,7 +19,7 @@
     <DockPanel DataContext="{StaticResource ViewModel}">
         <Grid Grid.Row="1" DockPanel.Dock="Top">
             <Menu VerticalAlignment="Top" DockPanel.Dock="Top" Height="20" HorizontalAlignment="Left" Margin="0,0" VerticalContentAlignment="Center">
-                <MenuItem Header="Dodaj ksiazke" Command="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"/>
+                <MenuItem Header="Dodaj ksiazke" Command="{Binding AddBookCommand, diag:PresentationTraceSources.TraceLevel=High}"/>
                 <MenuItem Header="Edytuj książkę" Command="{Binding DataContext.DisplayBookView, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" 
                           CommandParameter="{Binding SelectedBook}"/>
             </Menu>

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kolodziejski.RatingApp.ViewModel
+namespace Interfaces
 {
-    public class BookViewModel : BasePageViewModel
+    public interface IPagesManager
     {
+        void SetPageView(IViewModel viewModel);
+
     }
 }

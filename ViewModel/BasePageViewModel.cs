@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Kolodziejski.RatingApp.ViewModel
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BasePageViewModel : INotifyPropertyChanged, IViewModel
     {
         public void OnPropertyChanged(String propertyName)
         {
