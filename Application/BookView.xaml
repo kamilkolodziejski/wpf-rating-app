@@ -4,9 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Kolodziejski.RatingApp.Application"
+             xmlns:vm="clr-namespace:Kolodziejski.RatingApp.ViewModel;assembly=ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Aqua">
+    
+    <UserControl.Resources>
+        <vm:BookViewModel x:Key="ViewModel"/>
+    </UserControl.Resources>
+    
+    <Grid DataContext="{StaticResource ViewModel}" Background="Aqua">
         <Label Content="Hello" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>

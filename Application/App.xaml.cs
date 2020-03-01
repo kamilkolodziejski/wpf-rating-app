@@ -20,10 +20,6 @@ namespace Kolodziejski.RatingApp.Application
             base.OnStartup(e);
 
             MainWindow app = new MainWindow();
-            MainViewModel context = new MainViewModel();
-            //ViewsMediator.ParentViewModel = context;
-
-            app.DataContext = context;
             app.Show();
         }
 

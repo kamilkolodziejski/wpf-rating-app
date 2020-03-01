@@ -6,21 +6,23 @@
         xmlns:local="clr-namespace:Kolodziejski.RatingApp.Application"
         xmlns:vm="clr-namespace:Kolodziejski.RatingApp.ViewModel;assembly=ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Height="450" Width="800">
 
     <Window.Resources>
+        <vm:PagesViewModel x:Key="ViewModel" />
+        
         <DataTemplate DataType="{x:Type vm:BooksListViewModel}">
             <local:BooksListView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:BookViewModel}">
             <local:BookView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:MainViewModel}">
-            <local:MainView/>
-        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PagesViewModel}"/>
     </Window.Resources>
 
-    <Grid>
+
+
+    <Grid DataContext="{StaticResource ViewModel}">
         <ContentControl Content="{Binding CurrentPageViewModel}"/>
     </Grid>
 </Window>

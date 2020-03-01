@@ -25,6 +25,7 @@ namespace Kolodziejski.RatingApp.ViewModel
             set
             {
                 _selectedBook = value;
+                
             }
         }
 
