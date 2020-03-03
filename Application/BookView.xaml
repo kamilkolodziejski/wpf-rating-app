@@ -6,14 +6,53 @@
              xmlns:local="clr-namespace:Kolodziejski.RatingApp.Application"
              xmlns:vm="clr-namespace:Kolodziejski.RatingApp.ViewModel;assembly=ViewModel"
              mc:Ignorable="d" 
+            xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <UserControl.Resources>
         <vm:BookViewModel x:Key="ViewModel"/>
     </UserControl.Resources>
     
-    <Grid DataContext="{StaticResource ViewModel}" Background="Aqua">
-        <Label Content="Hello" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid DataContext="{StaticResource ViewModel}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        <DockPanel LastChildFill="True">
+            <!--<Menu Grid.Row="1" VerticalAlignment="Top" DockPanel.Dock="Top" Height="20" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalContentAlignment="Center">
+                <MenuItem Header="Zapisz" Command="{Binding Path=SaveChangesCommand}"/>
 
+                <MenuItem Header="Anuluj zmiany" Command="{Binding Path=CancelChangesCommand}" />
+                --><!--, diag:PresentationTraceSources.TraceLevel=High}--><!--
+            </Menu>-->
+            <StackPanel Grid.Row="1" DockPanel.Dock="Top" Orientation="Horizontal">
+                <Button Content="Akceptuj" Margin="10" FontSize="15" Padding="10" />
+                <Button Content="Anuluj" Command="{Binding Path=CancelCommand}" Margin="10" FontSize="15" Padding="10"  />
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+            <!--<StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Height="415" Margin="0,0,0,0" VerticalAlignment="Top" >-->
+                <Label Content="Tytuł" Width="Auto" Height="Auto" FontSize="25" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <TextBox MinWidth="150" Margin="10" FontSize="25" Grid.Column="2" Grid.Row="0" />
+                <Label Content="Autor" Width="Auto" Height="Auto" FontSize="25" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <TextBox MinWidth="150" Margin="10" FontSize="25" Grid.Column="2" Grid.Row="1" />
+                <Label Content="Gatunek" Width="Auto" Height="Auto" FontSize="25" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <TextBox MinWidth="150" Margin="10" FontSize="25" Grid.Column="2" Grid.Row="2" />
+                <Label Content="Typ książki" Width="Auto" Height="Auto" FontSize="25" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <TextBox MinWidth="150" Margin="10" FontSize="25" Grid.Column="2" Grid.Row="3" />
+                <Label Content="Opis" Width="Auto" Height="Auto" FontSize="25" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <TextBox MinWidth="150" Margin="10" FontSize="25" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" TextWrapping="Wrap" AcceptsReturn="True" />
+            <!--</StackPanel>-->
+            <!--<StackPanel Grid.Row="2" Grid.Column="2">-->
+            </Grid>
+            <!--</StackPanel>-->
+        </DockPanel>
     </Grid>
 </UserControl>

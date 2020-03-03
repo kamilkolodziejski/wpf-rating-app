@@ -19,18 +19,13 @@ namespace Kolodziejski.RatingApp.Application
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            IUnityContainer container = new UnityContainer();
-            container.RegisterType<IPagesViewModel, PagesViewModel>();
-            container.RegisterType<IPagesManager, PagesManager>();
+            //base.OnStartup(e);
 
-            var pagesModel = container.Resolve<IPagesViewModel>();
-
-            var pagesManager = container.Resolve<IPagesManager>();
-
-            base.OnStartup(e);
-            var app = new MainWindow();
-
-
+            PagesController pageController = new PagesController();
+            pageController.CurrentPageViewModel = new BooksListViewModel();
+            BasePageViewModel.PageController = pageController;
+            MainWindow app = new MainWindow();
+            app.DataContext = pageController;
             app.Show();
         }
 

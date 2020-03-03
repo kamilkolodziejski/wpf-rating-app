@@ -15,44 +15,24 @@ namespace Kolodziejski.RatingApp.ViewModel
     {
         private ObservableCollection<IBook> _books;
         private IBook _selectedBook;
-        private IPagesManager _pagesManager;
-        private RelayCommand _addBookCommand;
-
-        public RelayCommand AddBookCommand
-        {
-            get
-            {
-                if (_addBookCommand == null)
-                    _addBookCommand = new RelayCommand(execute => {
-                        if (_pagesManager == null) _pagesManager = new UnityContainer().Resolve<IPagesManager>();
-                        _pagesManager.SetPageView(new BookViewModel());
-                        }, canExecute => true);
-                return _addBookCommand;
-            }
-        }
 
         public BooksListViewModel()
         {
             LoadData();
+            AddBookCommand = new RelayCommand(x => BasePageViewModel.PageController.SetPageView(new BookViewModel()));
+            EditBookCommand = new RelayCommand(x => BasePageViewModel.PageController.SetPageView(new BookViewModel()), pred => SelectedBook != null);
         }
 
-        //[Dependency]
-        //public IPagesManager PagesManager
-        //{
-        //    set
-        //    {
-        //        _pagesManager = value;
-        //    }
-        //    private get { return _pagesManager; }
-        //}
-
+        public RelayCommand AddBookCommand { get; private set; }
+        public RelayCommand EditBookCommand { get; private set; }
         public IBook SelectedBook
         {
-            get { return _selectedBook; }
+            get => _selectedBook; 
             set
             {
                 _selectedBook = value;
-                
+                OnPropertyChanged(nameof(SelectedBook));
+                //EditBookCommand.RaiseCanExecuteChanged();
             }
         }
 

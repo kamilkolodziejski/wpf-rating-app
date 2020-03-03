@@ -10,6 +10,7 @@ namespace Kolodziejski.RatingApp.ViewModel
 {
     public class BasePageViewModel : INotifyPropertyChanged, IViewModel
     {
+        public static IPageController PageController = null;
         public void OnPropertyChanged(String propertyName)
         {
             if(propertyName != null)

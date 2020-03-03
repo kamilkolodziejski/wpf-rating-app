@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    public interface IPagesManager
+    public interface IPageController
     {
-        void SetPageView(IViewModel viewModel);
-
+        void SetPageView(object pageView);
     }
 }

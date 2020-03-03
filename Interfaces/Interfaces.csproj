@@ -44,7 +44,7 @@
     <Compile Include="Domain\IBook.cs" />
     <Compile Include="Domain\BookType.cs" />
     <Compile Include="Domain\IRating.cs" />
-    <Compile Include="IPagesManager.cs" />
+    <Compile Include="IPageController.cs" />
     <Compile Include="IPagesViewModel.cs" />
     <Compile Include="IViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

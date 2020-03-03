@@ -9,29 +9,31 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <!--<UserControl.DataContext>
-        <vm:BooksListViewModel/>
-    </UserControl.DataContext>-->
     <UserControl.Resources>
-        <vm:BooksListViewModel x:Key="ViewModel"/>
+        <vm:BooksListViewModel x:Key="ViewModel">
+        </vm:BooksListViewModel>
     </UserControl.Resources>
 
-    <DockPanel DataContext="{StaticResource ViewModel}">
-        <Grid Grid.Row="1" DockPanel.Dock="Top">
-            <Menu VerticalAlignment="Top" DockPanel.Dock="Top" Height="20" HorizontalAlignment="Left" Margin="0,0" VerticalContentAlignment="Center">
-                <MenuItem Header="Dodaj ksiazke" Command="{Binding AddBookCommand, diag:PresentationTraceSources.TraceLevel=High}"/>
-                <MenuItem Header="Edytuj książkę" Command="{Binding DataContext.DisplayBookView, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" 
-                          CommandParameter="{Binding SelectedBook}"/>
-            </Menu>
-            <!--<Button Content="Dodaj książkę" DockPanel.Dock="Top" Command="{Binding DataContext.DisplayBookView, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, diag:PresentationTraceSources.TraceLevel=High}" Width="150" HorizontalAlignment="Left"/>-->
 
-        </Grid>
-        <Grid>
-            <DataGrid ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}" HorizontalAlignment="Left" Height="400" Margin="0,0,0,0" VerticalAlignment="Top" Width="800" UseLayoutRounding="False" IsReadOnly="True" Grid.ColumnSpan="2"  SelectionMode="Single"/>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-        </Grid>
-    </DockPanel>
+    <Grid DataContext="{StaticResource ViewModel}">
+        <DockPanel LastChildFill="True">
+            <!--<Menu Grid.Row="1" VerticalAlignment="Top" DockPanel.Dock="Top" Height="20" HorizontalAlignment="Left" Margin="0,0" VerticalContentAlignment="Center">
+                <MenuItem Header="Dodaj ksiazke" Command="{Binding Path=AddBookCommand, UpdateSourceTrigger=PropertyChanged}"/>
+                <MenuItem Header="Edytuj ksiazke" Command="{Binding Path=EditBookCommand, UpdateSourceTrigger=PropertyChanged}" CommandParameter="{Binding}"/>
+                --><!--, diag:PresentationTraceSources.TraceLevel=High}--><!--
+            </Menu>-->
+            <StackPanel Grid.Row="1" DockPanel.Dock="Top" Orientation="Horizontal">
+                <Button Content="Dodaj książkę" Command="{Binding Path=AddBookCommand}" Margin="10" FontSize="15" Padding="10" />
+                <Button Content="Edytuj książkę" Command="{Binding Path=EditBookCommand}" CommandTarget="{Binding}" Margin="10" FontSize="15" Padding="10"  />
+            </StackPanel>
+            <!--<Button Content="Dodaj książkę" DockPanel.Dock="Top" Command="{Binding DataContext.DisplayBookView, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, diag:PresentationTraceSources.TraceLevel=High}" Width="150" HorizontalAlignment="Left"/>-->
+            <Grid DockPanel.Dock="Bottom">
+                <DataGrid ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}" HorizontalAlignment="Left" Height="400" Margin="0,0,0,0" VerticalAlignment="Top" Width="800" UseLayoutRounding="False" IsReadOnly="True" Grid.ColumnSpan="2"  SelectionMode="Single"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </DockPanel>
+    </Grid>
 </UserControl>
