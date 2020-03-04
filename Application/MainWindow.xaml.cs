@@ -25,5 +25,10 @@ namespace Kolodziejski.RatingApp.Application
         {
             InitializeComponent();
         }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.MainWindow = this;
+        }
     }
 }

@@ -11,7 +11,6 @@ namespace Kolodziejski.RatingApp.ViewModel
     {
         Action<Object> _executeMethod;
         Predicate<object> _canExecuteMethod;
-        public event EventHandler CanExecuteChanged;
 
         public RelayCommand(Action<object> executeMethod)
         {
@@ -23,9 +22,10 @@ namespace Kolodziejski.RatingApp.ViewModel
             _canExecuteMethod = canExecuteMethod;
         }
 
-        public void RaiseCanExecuteChanged()
+        public event EventHandler CanExecuteChanged
         {
-            CanExecuteChanged(this, EventArgs.Empty);
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
 
         public bool CanExecute(object parameters)

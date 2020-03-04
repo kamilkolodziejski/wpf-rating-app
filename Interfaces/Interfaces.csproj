@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\IBook.cs" />
-    <Compile Include="Domain\BookType.cs" />
     <Compile Include="Domain\IRating.cs" />
     <Compile Include="IPageController.cs" />
     <Compile Include="IPagesViewModel.cs" />
@@ -51,6 +50,11 @@
     <Compile Include="Repository\IBookRepository.cs" />
     <Compile Include="Repository\IRatingRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{59E90678-DC3D-4DCA-8A4D-EC80F71C0EE4}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

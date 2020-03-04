@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kolodziejski.RatingApp.Application"
         xmlns:vm="clr-namespace:Kolodziejski.RatingApp.ViewModel;assembly=ViewModel"
+        xmlns:c="clr-namespace:Kolodziejski.RatingApp.Core;assembly=Core"
         mc:Ignorable="d"
-        Height="450" Width="800">
+        Height="400" Width="600" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" Loaded="MainWindow_Loaded">
 
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:BooksListViewModel}">

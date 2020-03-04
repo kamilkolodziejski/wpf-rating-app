@@ -9,5 +9,6 @@ namespace Interfaces
     public interface IPageController
     {
         void SetPageView(object pageView);
+        void SetPageView(object pageView, int width, int hegith);
     }
 }

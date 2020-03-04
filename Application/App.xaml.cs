@@ -21,11 +21,14 @@ namespace Kolodziejski.RatingApp.Application
         {
             //base.OnStartup(e);
 
-            PagesController pageController = new PagesController();
-            pageController.CurrentPageViewModel = new BooksListViewModel();
-            BasePageViewModel.PageController = pageController;
-            MainWindow app = new MainWindow();
-            app.DataContext = pageController;
+            var pageController = PagesControllerFactory.INSTANCE;
+            
+            //BasePageViewModel.PageController = pageController;
+            MainWindow app = new MainWindow
+            {
+                DataContext = pageController
+            };
+            pageController.SetPageView(new BooksListViewModel());
             app.Show();
         }
 
