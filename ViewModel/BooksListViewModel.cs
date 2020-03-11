@@ -1,7 +1,6 @@
 ﻿using Kolodziejski.RatingApp.Interfaces;
 using Kolodziejski.RatingApp.Interfaces.Domain;
 using Kolodziejski.RatingApp.Core;
-using Kolodziejski.RatingApp.Persist.InMemory;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

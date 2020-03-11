@@ -69,10 +69,6 @@
       <Project>{A9EC8628-63B7-43E1-86E1-5ACF376C17A0}</Project>
       <Name>Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Persistent\InMemory.csproj">
-      <Project>{20DDEFA8-3994-4D03-AA09-18F8F2E079A0}</Project>
-      <Name>InMemory</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
