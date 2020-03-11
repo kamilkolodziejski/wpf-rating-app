@@ -1,13 +1,15 @@
-﻿using Interfaces;
-using Interfaces.Domain;
+﻿using Kolodziejski.RatingApp.Interfaces;
+using Kolodziejski.RatingApp.Interfaces.Domain;
 using Kolodziejski.RatingApp.Core;
-using Persistent;
+using Kolodziejski.RatingApp.Persist.InMemory;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime;
+using Kolodziejski.RatingApp.BusinessLogic;
 
 namespace Kolodziejski.RatingApp.ViewModel
 {
@@ -17,8 +19,8 @@ namespace Kolodziejski.RatingApp.ViewModel
         private IBook _selectedBook;
 
         public BooksListViewModel()
-        {
-            LoadData();
+{
+            var bookService = new BookService();
             AddBookCommand = new RelayCommand(x => PagesControllerFactory.INSTANCE.SetPageView(new BookViewModel(), 360, 360));
             EditBookCommand = new RelayCommand(x => EditBook(x), pred => SelectedBook != null);
         }
@@ -50,33 +52,6 @@ namespace Kolodziejski.RatingApp.ViewModel
                 }
                 return _books;
             }
-        }
-
-        private void LoadData()
-        {
-            var book = new BookDao()
-            {
-                Author = "Jony Sangiago",
-                Title = "Pewnego razu w chinach",
-                Genre = "Historyczna",
-                Id = Guid.NewGuid(),
-                Type = BookType.EBOOK,
-                Description = "Gupia ksiazka",
-                IsRead = false
-            };
-            Books.Add(book);
-
-            book = new BookDao()
-            {
-                Author = "Adam Ziemniewicz",
-                Title = "Ziemniaki - hodowla. Best practices.",
-                Genre = "Naukowa",
-                Id = Guid.NewGuid(),
-                Type = BookType.PAPER,
-                Description = "Mondra ksiazka",
-                IsRead = true
-            };
-            Books.Add(book);
         }
     }
 }

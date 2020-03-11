@@ -1,4 +1,5 @@
-﻿using Interfaces;
+﻿using Kolodziejski.RatingApp.BusinessLogic;
+using Kolodziejski.RatingApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,19 @@ namespace Kolodziejski.RatingApp.ViewModel
 
         public PagesController()
         {
+            var bookService = new BookService();
+            var book = bookService.CreateNewBook();
+            book.Id = Guid.NewGuid();
+            book.Title = "Test title";
+            book.Author = "Jan Kowalski";
+            book.Genre = "Fantasy";
+            book.Type = Core.BookType.AUDIO;
+            book.IsRead = false;
+            book.Description = "Simple description";
+            bookService.AddBook(book);
+
             PageViewModels.Add(new BooksListViewModel());
             PageViewModels.Add(new BookViewModel());
-            
 
             CurrentPageViewModel = PageViewModels[0];
         }

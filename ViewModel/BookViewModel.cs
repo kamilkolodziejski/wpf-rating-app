@@ -1,4 +1,4 @@
-﻿using Interfaces.Domain;
+﻿using Kolodziejski.RatingApp.Interfaces.Domain;
 using Kolodziejski.RatingApp.Core;
 using System;
 using System.Collections.Generic;

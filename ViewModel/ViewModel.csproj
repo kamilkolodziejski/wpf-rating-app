@@ -57,6 +57,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{484FB0BB-513B-49E4-AE23-AC589C2D443B}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{59E90678-DC3D-4DCA-8A4D-EC80F71C0EE4}</Project>
       <Name>Core</Name>
@@ -65,9 +69,9 @@
       <Project>{A9EC8628-63B7-43E1-86E1-5ACF376C17A0}</Project>
       <Name>Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Persistent\Persistent.csproj">
+    <ProjectReference Include="..\Persistent\InMemory.csproj">
       <Project>{20DDEFA8-3994-4D03-AA09-18F8F2E079A0}</Project>
-      <Name>Persistent</Name>
+      <Name>InMemory</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

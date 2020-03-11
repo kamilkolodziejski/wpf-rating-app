@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kolodziejski.RatingApp.Interfaces
+namespace AnotherInMemoryRepository
 {
-    public interface IViewModel
+    public class Class1
     {
     }
 }

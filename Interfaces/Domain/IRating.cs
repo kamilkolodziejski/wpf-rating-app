@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interfaces.Domain
+namespace Kolodziejski.RatingApp.Interfaces.Domain
 {
     public interface IRating
     {

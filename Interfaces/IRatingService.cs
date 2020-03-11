@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kolodziejski.RatingApp.Interfaces
 {
-    public interface IViewModel
+    interface IRatingService
     {
     }
 }

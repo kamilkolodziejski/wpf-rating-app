@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interfaces.Domain
+namespace Kolodziejski.RatingApp.Interfaces.Domain
 {
     public interface IBook
     {
@@ -16,6 +16,6 @@ namespace Interfaces.Domain
         String Description { get; set; }
         bool IsRead { get; set; }
         BookType Type { get; set; }
-        //IEnumerable<Rating> Ratings { get; set; }
+        //IRating Rating { get; set; }
     }
 }
