@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Kolodziejski.RatingApp.BusinessLogic;
 
 namespace Kolodziejski.RatingApp.ViewModel
 {
@@ -15,7 +16,7 @@ namespace Kolodziejski.RatingApp.ViewModel
         public RelayCommand RejectChangesCommand { get; private set; }
         public BookViewModel() : base()
         {
-            SaveChangesCommand = new RelayCommand(CancelAction);
+            SaveChangesCommand = new RelayCommand(SaveAction);
             RejectChangesCommand = new RelayCommand(CancelAction);
         }
 
@@ -25,6 +26,21 @@ namespace Kolodziejski.RatingApp.ViewModel
         {
             get => _activeBook;
             set => SetValue(ref _activeBook, value);
+        }
+        private void SaveAction(object param)
+        {
+            var bookService = new BookService();
+            if(ActiveBook.Id == Guid.Empty)
+            {
+                ActiveBook.Id = Guid.NewGuid();
+                bookService.AddBook(ActiveBook);
+            }
+            else
+            {
+                bookService.AddBook(ActiveBook);
+            }
+            PagesControllerFactory.INSTANCE.SetPageView(new BooksListViewModel(), 400, 600);
+
         }
 
         private void CancelAction(object param) =>

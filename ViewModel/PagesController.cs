@@ -25,6 +25,10 @@ namespace Kolodziejski.RatingApp.ViewModel
             book.Type = Core.BookType.AUDIO;
             book.IsRead = false;
             book.Description = "Simple description";
+
+            book.Rating.Author = "Ja";
+            book.Rating.Comment = "Hujnia";
+            book.Rating.RatingPoints = 5;
             bookService.AddBook(book);
 
             PageViewModels.Add(new BooksListViewModel());

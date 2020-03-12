@@ -16,6 +16,6 @@ namespace Kolodziejski.RatingApp.Interfaces.Domain
         String Description { get; set; }
         bool IsRead { get; set; }
         BookType Type { get; set; }
-        //IRating Rating { get; set; }
+        IRating Rating { get; set; }
     }
 }

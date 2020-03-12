@@ -18,9 +18,10 @@ namespace Kolodziejski.RatingApp.BusinessLogic
         }
 
         public void AddBook(IBook book)
-        {
-            _bookRepository.Persist(book);
-        }
+            => _bookRepository.Persist(book);
+
+        public void RemoveBook(Guid id)
+            => _bookRepository.Delete(id);
 
         public IBook CreateNewBook()
             => _bookRepository.CreateNewBook();

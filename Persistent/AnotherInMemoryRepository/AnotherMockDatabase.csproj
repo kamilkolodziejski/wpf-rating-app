@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{20DDEFA8-3994-4D03-AA09-18F8F2E079A0}</ProjectGuid>
+    <ProjectGuid>{6D7134F1-72D5-4403-81B2-0973E12DCD6E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kolodziejski.RatingApp.Persist.InMemory</RootNamespace>
-    <AssemblyName>Persistent.InMemory</AssemblyName>
+    <RootNamespace>Kolodziejski.RatingApp.Persist.AnotherMockDatabase</RootNamespace>
+    <AssemblyName>AnotherMockDatabase</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookDao.cs" />
-    <Compile Include="InMemoryBookRepository.cs" />
+    <Compile Include="AnotherBookDao.cs" />
+    <Compile Include="AnotherMockRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RatingDao.cs" />
+    <Compile Include="AnotherRatingDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Core.csproj">
@@ -57,4 +57,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>powershell -ExecutionPolicy Unrestricted -file "$(SolutionDir)ExportDllFiles.ps1" -SourceDll "$(TargetPath)" -TargetDll "$(SolutionDir)Libraries\$(TargetName).dll"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

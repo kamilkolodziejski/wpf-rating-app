@@ -1,15 +1,10 @@
-﻿using Kolodziejski.RatingApp.Interfaces.Domain;
-using Kolodziejski.RatingApp.Core;
+﻿using Kolodziejski.RatingApp.Core;
+using Kolodziejski.RatingApp.Interfaces.Domain;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Kolodziejski.RatingApp.Persist.SimpleMockRepository
+namespace Kolodziejski.RatingApp.Persist.AnotherMockDatabase
 {
-    public class BookDao : IBook
+    public class AnotherBookDao : IBook
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
@@ -19,7 +14,7 @@ namespace Kolodziejski.RatingApp.Persist.SimpleMockRepository
         public BookType Type { get; set; }
         public bool IsRead { get; set; }
         //private RatingDao _rating = new RatingDao();
-        public IRating Rating { get;set; }
+        public IRating Rating { get; set; }
         //{
         //    get => (IRating)_rating;
         //    set => _rating = (RatingDao) value;

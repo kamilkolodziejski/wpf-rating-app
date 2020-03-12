@@ -25,7 +25,7 @@ namespace Kolodziejski.RatingApp.BusinessLogic.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Persistent.InMemory.dll")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SimpleMockDatabase.dll")]
         public string DllRepository {
             get {
                 return ((string)(this["DllRepository"]));

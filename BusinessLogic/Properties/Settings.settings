@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="DllRepository" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Persistent.InMemory.dll</Value>
+      <Value Profile="(Default)">SimpleMockDatabase.dll</Value>
     </Setting>
   </Settings>
 </SettingsFile>

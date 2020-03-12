@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>6d7134f1-72d5-4403-81b2-0973e12dcd6e</ProjectGuid>
+    <ProjectGuid>{20DDEFA8-3994-4D03-AA09-18F8F2E079A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AnotherInMemoryRepository</RootNamespace>
-    <AssemblyName>AnotherInMemoryRepository</AssemblyName>
+    <RootNamespace>Kolodziejski.RatingApp.Persist.SimpleMockDatabase</RootNamespace>
+    <AssemblyName>SimpleMockDatabase</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,24 +31,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BookDao.cs" />
+    <Compile Include="SimpleMockRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RatingDao.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.csproj">
+      <Project>{59E90678-DC3D-4DCA-8A4D-EC80F71C0EE4}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Interfaces\Interfaces.csproj">
+      <Project>{A9EC8628-63B7-43E1-86E1-5ACF376C17A0}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+  <PropertyGroup>
+    <PostBuildEvent>powershell -ExecutionPolicy Unrestricted -file "$(SolutionDir)ExportDllFiles.ps1" -SourceDll "$(TargetPath)" -TargetDll "$(SolutionDir)Libraries\$(TargetName).dll"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

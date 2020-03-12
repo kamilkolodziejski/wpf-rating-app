@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kolodziejski.RatingApp.Persist.SimpleMockRepository
+namespace Kolodziejski.RatingApp.Persist.AnotherMockDatabase
 {
-    public class RatingDao : IRating
+    public class AnotherRatingDao : IRating
     {
         public Guid Id { get; set; }
         public string Author { get; set; }

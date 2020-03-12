@@ -24,12 +24,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{59E90678-DC3D-4DCA-8A4D-EC80F71C0EE4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persist", "Persist", "{9691A980-F707-4C28-902D-287C9AAF48F7}"
+	ProjectSection(SolutionItems) = preProject
+		ExportDllFiles.ps1 = ExportDllFiles.ps1
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{484FB0BB-513B-49E4-AE23-AC589C2D443B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnotherInMemoryRepository", "Persistent\AnotherInMemoryRepository\AnotherInMemoryRepository.csproj", "{6D7134F1-72D5-4403-81B2-0973E12DCD6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnotherMockDatabase", "Persistent\AnotherInMemoryRepository\AnotherMockDatabase.csproj", "{6D7134F1-72D5-4403-81B2-0973E12DCD6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemory", "Persistent\InMemoryRepository\InMemory.csproj", "{20DDEFA8-3994-4D03-AA09-18F8F2E079A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMockDatabase", "Persistent\InMemoryRepository\SimpleMockDatabase.csproj", "{20DDEFA8-3994-4D03-AA09-18F8F2E079A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

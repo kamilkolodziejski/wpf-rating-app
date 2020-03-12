@@ -20,25 +20,42 @@ namespace Kolodziejski.RatingApp.ViewModel
         public BooksListViewModel()
 {
             var bookService = new BookService();
-            AddBookCommand = new RelayCommand(x => PagesControllerFactory.INSTANCE.SetPageView(new BookViewModel(), 360, 360));
+            _books = new ObservableCollection<IBook>(bookService.GetBooks());
+            AddBookCommand = new RelayCommand(AddNewBook);
             EditBookCommand = new RelayCommand(x => EditBook(x), pred => SelectedBook != null);
+            DeleteBookCommand = new RelayCommand(x => DeleteBook(x), pred => SelectedBook != null);
         }
 
         public RelayCommand AddBookCommand { get; private set; }
         public RelayCommand EditBookCommand { get; private set; }
+        public RelayCommand DeleteBookCommand { get; private set; }
         public IBook SelectedBook
         {
             get => _selectedBook;
             set => SetValue(ref _selectedBook, value);
         }
 
+        private void AddNewBook(object x)
+        {
+            var view = new BookViewModel();
+            view.ActiveBook = new BookService().CreateNewBook();
+            PagesControllerFactory.INSTANCE.SetPageView(view, 360, 360);
+        }
+
         private void EditBook(object x)
         {
+            Console.WriteLine(SelectedBook.ToString());
             var view = new BookViewModel();
             view.ActiveBook = SelectedBook;
             PagesControllerFactory.INSTANCE.SetPageView(view, 360, 360);
-            var pageController = (PagesController) PagesControllerFactory.INSTANCE;
-            ((BookViewModel)pageController.CurrentPageViewModel).ActiveBook = SelectedBook;
+        }
+
+        private void DeleteBook(object x)
+        {
+            var bookService = new BookService();
+            bookService.RemoveBook(SelectedBook.Id);
+            Books.Remove(SelectedBook);
+            SelectedBook = null;
         }
 
         public ObservableCollection<IBook> Books
@@ -51,6 +68,7 @@ namespace Kolodziejski.RatingApp.ViewModel
                 }
                 return _books;
             }
+            set => SetValue(ref _books, value);
         }
     }
 }
