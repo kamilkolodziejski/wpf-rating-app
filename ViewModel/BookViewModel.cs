@@ -39,12 +39,12 @@ namespace Kolodziejski.RatingApp.ViewModel
             {
                 bookService.AddBook(ActiveBook);
             }
-            PagesControllerFactory.INSTANCE.SetPageView(new BooksListViewModel(), 400, 600);
+            PagesControllerFactory.INSTANCE.SetPageView(new BooksListViewModel());
 
         }
 
         private void CancelAction(object param) =>
-            PagesControllerFactory.INSTANCE.SetPageView(new BooksListViewModel(), 400, 600);
+            PagesControllerFactory.INSTANCE.SetPageView(new BooksListViewModel());
 
 
         //DialogResult dialogResult = MessageBox.Show("Chcesz wyjść nie zapisując zmian?", "Uwaga", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);

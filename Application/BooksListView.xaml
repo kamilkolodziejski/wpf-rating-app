@@ -7,7 +7,7 @@
              xmlns:vm="clr-namespace:Kolodziejski.RatingApp.ViewModel;assembly=ViewModel"
              xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="800" d:DesignWidth="1200">
 
     <UserControl.Resources>
         <vm:BooksListViewModel x:Key="ViewModel">
@@ -17,16 +17,21 @@
 
     <Grid DataContext="{StaticResource ViewModel}">
         <DockPanel LastChildFill="True">
-            <StackPanel Grid.Row="1" DockPanel.Dock="Top" Orientation="Horizontal">
+            <DockPanel Grid.Row="1" DockPanel.Dock="Top">
                 <Button Content="Dodaj książkę" Command="{Binding AddBookCommand}" Margin="10" FontSize="15" Padding="10" />
                 <Button Content="Edytuj książkę" Command="{Binding EditBookCommand}" CommandParameter="{Binding SelectedBook}" Margin="10" FontSize="15" Padding="10"  />
                 <Button Content="Usuń książkę" Command="{Binding DeleteBookCommand}" CommandParameter="{Binding SelectedBook}" Margin="10" FontSize="15" Padding="10"  />
-            </StackPanel>
-            <Expander DockPanel.Dock="Bottom" >
-                <DockPanel>
-                    <Label Name="x" Content="{Binding SelectedBook.Rating.Author}"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="Auto" Margin="0,0,10,0" >
+                    <TextBox HorizontalAlignment="Right" TextAlignment="Justify" Margin="20,20,10,20" Text="Wyszukaj ..." MinWidth="150"/>
+                    <Button Content="Szukaj" Margin="0,20,5,20" Padding="10,0,10,0" />
+                    <Button Content="Czyść" Margin="0,20,0,20" Padding="10,0,10,0"/>
+
+                </StackPanel>
+            </DockPanel>
+            <Expander DockPanel.Dock="Bottom" Header="{Binding SelectedBook}" Content="{Binding SelectedBook.Rating.Comment}"  >
+                <!--<DockPanel>
                     <Label Content="Test"/>
-                </DockPanel>
+                </DockPanel>-->
             </Expander>
             <Grid >
                 <DataGrid x:Name="BooksList" ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}" 
@@ -34,6 +39,6 @@
                           ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"
                           IsReadOnly="True" Grid.ColumnSpan="2" Grid.RowSpan="1" SelectionMode="Single"/>
             </Grid>
-             </DockPanel>
+        </DockPanel>
     </Grid>
 </UserControl>

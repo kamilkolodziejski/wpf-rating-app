@@ -18,7 +18,9 @@ namespace Kolodziejski.RatingApp.ViewModel
         private IBook _selectedBook;
 
         public BooksListViewModel()
-{
+        {
+            base.Width = 700;
+            base.Height = 1200;
             var bookService = new BookService();
             _books = new ObservableCollection<IBook>(bookService.GetBooks());
             AddBookCommand = new RelayCommand(AddNewBook);

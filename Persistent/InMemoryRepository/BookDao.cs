@@ -24,5 +24,10 @@ namespace Kolodziejski.RatingApp.Persist.SimpleMockRepository
         //    get => (IRating)_rating;
         //    set => _rating = (RatingDao) value;
         //}
+
+        public override string ToString()
+        {
+            return $"{Title} {Genre} {Author} {Description}";
+        }
     }
 }

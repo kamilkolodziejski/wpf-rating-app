@@ -69,6 +69,11 @@ namespace Kolodziejski.RatingApp.ViewModel
             if(pageView is BasePageViewModel)
             {
                 CurrentPageViewModel = (BasePageViewModel) pageView;
+                if(CurrentPageViewModel.Width.HasValue && CurrentPageViewModel.Height.HasValue)
+                {
+                    Width = CurrentPageViewModel.Width.Value;
+                    Height = CurrentPageViewModel.Height.Value;
+                }
                 //if (!PageViewModels.Contains(pageView))
                 //    PageViewModels.Add((BasePageViewModel)pageView);
 
